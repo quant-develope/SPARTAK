@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://spartak.unknwn-creation.workers.dev/sitemap.xml
+Sitemap: https://pisina-ellada.com/sitemap.xml

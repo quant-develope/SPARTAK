@@ -5,7 +5,7 @@
   // The site address. To move to a custom domain: attach the domain to this worker in Cloudflare first,
   // then change SITE_URL, run python3 src/build.py (canonicals, hreflang, sitemap, robots, schema) and push.
   // Requests to any other host (e.g. *.workers.dev) are then answered with a 301 to this address.
-  "vars": { "SITE_URL": "https://spartak.unknwn-creation.workers.dev" },
+  "vars": { "SITE_URL": "https://pisina-ellada.com" },
   "assets": {
     "directory": "./site",
     "binding": "ASSETS",
