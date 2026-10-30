@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://spartak.unknwn-creation.workers.dev/sitemap.xml

@@ -1,0 +1,17 @@
+{
+  "name": "spartak",
+  "main": "worker.js",
+  "compatibility_date": "2025-10-01",
+  "assets": {
+    "directory": "./site",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*"]
+  },
+  // Quote form leads (worker.js). Same sender domain and inbox as spartakos-pisina.com:
+  // the address must be a verified destination in Email Routing of spartakos-pisina.com.
+  "send_email": [
+    { "name": "LEAD", "destination_address": "pisina.gr@gmail.com" }
+  ]
+}
