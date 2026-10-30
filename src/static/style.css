@@ -192,6 +192,9 @@ figcaption { font-size: .88rem; color: var(--muted); margin-top: 8px; }
 .ticks li::before { content: ""; position: absolute; left: 2px; top: .45em; width: 16px; height: 9px; border-left: 3px solid var(--aqua); border-bottom: 3px solid var(--aqua); transform: rotate(-45deg); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; list-style: none; }
 .chips li { margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: .94rem; }
+.chips a { color: var(--sea); text-decoration: none; font-weight: 500; }
+.chips li:has(a) { border-color: var(--aqua); }
+.chips li:has(a):hover { background: var(--foam); }
 .sec-sea .chips li { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
 .cols { display: grid; gap: 26px; }
 @media (min-width: 900px) { .cols { grid-template-columns: repeat(3, 1fr); } .cols-2 { grid-template-columns: 1fr 1fr; } }

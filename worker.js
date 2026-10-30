@@ -1,4 +1,5 @@
-// Worker "spartak" (second site): serves site/ as static assets and handles POST /api/lead from the quote form.
+// Worker "spartak" (second site): serves site/ as static assets, 301s other hostnames to SITE_URL
+// and handles POST /api/lead from the quote form.
 // A lead is emailed to the owner through Cloudflare Email Routing (binding LEAD in wrangler.jsonc).
 // The sender address must be on the domain, and the destination must be verified in Email Routing.
 import { EmailMessage } from "cloudflare:email";
@@ -10,6 +11,11 @@ const MAX_FIELD = 2000;
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const site = new URL(env.SITE_URL);
+    if (url.hostname !== site.hostname && url.hostname !== "localhost" && url.hostname !== "127.0.0.1") {
+      // one address for Google: the old workers.dev address and www. are moved permanently to SITE_URL
+      return Response.redirect(site.origin + url.pathname + url.search, 301);
+    }
     if (url.pathname !== "/api/lead") return env.ASSETS.fetch(request);
     if (request.method !== "POST") return json({ success: false, message: "POST only" }, 405);
     const origin = request.headers.get("Origin");

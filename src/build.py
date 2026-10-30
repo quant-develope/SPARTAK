@@ -4,6 +4,7 @@
 Run: python3 src/build.py   (writes ../site, which Cloudflare serves as-is)
 Pages live in pages_el.py / pages_en.py, shared blocks in parts.py.
 """
+import hashlib
 import html
 import json
 import os
@@ -142,7 +143,29 @@ def write(path, text):
         f.write(text)
 
 
+LASTMOD = os.path.join(HERE, "lastmod.json")
+
+
+def lastmods(pages):
+    """lastmod changes only when a page's own content changes (kept in src/lastmod.json, commit it)."""
+    try:
+        with open(LASTMOD, encoding="utf-8") as f:
+            old = json.load(f)
+    except FileNotFoundError:
+        old = {}
+    new = {}
+    for p in pages:
+        key = "\n".join([DOMAIN, p["title"], p["desc"], p["h1"], p["lead"], p["body"], json.dumps(p.get("faq"), ensure_ascii=False)])
+        h = hashlib.sha1(key.encode("utf-8")).hexdigest()[:12]
+        prev = old.get(p["path"])
+        new[p["path"]] = prev if prev and prev[0] == h else [h, TODAY]
+    with open(LASTMOD, "w", encoding="utf-8") as f:
+        json.dump(new, f, ensure_ascii=False, indent=0, sort_keys=True)
+    return {k: v[1] for k, v in new.items()}
+
+
 def sitemap(pages):
+    mod = lastmods(pages)
     rows = []
     for p in pages:
         if p.get("noindex"):
@@ -156,7 +179,7 @@ def sitemap(pages):
         imgs = "".join("<image:image><image:loc>%s/img/%s-1600.webp</image:loc></image:image>" % (DOMAIN, n)
                        for n in sorted(set(re.findall(r'/img/([a-z0-9-]+?)-(?:480|960|1600)\.webp', p["html"])))[:12]
                        if parts.IMG.get(n, (0,))[0] >= 1600) if p["html"] else ""
-        rows.append("<url><loc>%s%s</loc><lastmod>%s</lastmod>%s%s</url>" % (DOMAIN, p["path"], TODAY, alts, imgs))
+        rows.append("<url><loc>%s%s</loc><lastmod>%s</lastmod>%s%s</url>" % (DOMAIN, p["path"], mod[p["path"]], alts, imgs))
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
             'xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
             + "\n".join(rows) + "\n</urlset>\n")
@@ -193,6 +216,8 @@ def main():
     nf = pages_el.not_found()
     write("/404.html", page(nf))
     write("/sitemap.xml", sitemap(pages))
+    write("/_headers", "/img/*\n  Cache-Control: public, max-age=2592000\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n"
+          "/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n")
     write("/robots.txt", "User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % DOMAIN)
     write("/site.webmanifest", json.dumps({
         "name": BIZ["name"]["el"], "short_name": "Πισίνα Προκάτ", "start_url": "/", "display": "browser",

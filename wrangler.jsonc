@@ -2,12 +2,16 @@
   "name": "spartak",
   "main": "worker.js",
   "compatibility_date": "2025-10-01",
+  // The site address. To move to a custom domain: attach the domain to this worker in Cloudflare first,
+  // then change SITE_URL, run python3 src/build.py (canonicals, hreflang, sitemap, robots, schema) and push.
+  // Requests to any other host (e.g. *.workers.dev) are then answered with a 301 to this address.
+  "vars": { "SITE_URL": "https://spartak.unknwn-creation.workers.dev" },
   "assets": {
     "directory": "./site",
     "binding": "ASSETS",
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash",
-    "run_worker_first": ["/api/*"]
+    "run_worker_first": true
   },
   // Quote form leads (worker.js). Same sender domain and inbox as spartakos-pisina.com:
   // the address must be a verified destination in Email Routing of spartakos-pisina.com.

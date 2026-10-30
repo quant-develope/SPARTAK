@@ -1,8 +1,19 @@
 """Shared blocks: header, hero, footer, quote form, pictures, schema."""
 import html
+import json
+import os
+import re
 
-DOMAIN = "https://spartak.unknwn-creation.workers.dev"
-VER = "1030e"
+
+def site_url():
+    """The site address lives in one place: vars.SITE_URL in wrangler.jsonc (the worker 301s other hosts to it)."""
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "wrangler.jsonc"), encoding="utf-8") as f:
+        conf = json.loads(re.sub(r"^\s*//.*$", "", f.read(), flags=re.M))
+    return conf["vars"]["SITE_URL"].rstrip("/")
+
+
+DOMAIN = site_url()
+VER = "1030f"
 IMG = {}  # photo name -> (width, height), filled by build.py
 
 PHONE = "+30 212 104 8320"
