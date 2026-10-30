@@ -2,7 +2,7 @@
 import html
 
 DOMAIN = "https://spartak.unknwn-creation.workers.dev"
-VER = "1030a"
+VER = "1030b"
 IMG = {}  # photo name -> (width, height), filled by build.py
 
 PHONE = "+30 212 104 8320"
@@ -77,7 +77,7 @@ MENU = {
     "el": [
         ("Πισίνες", [("/pisina-prokat/", "Πισίνα προκάτ: πώς είναι φτιαγμένη"), ("/pisina-skimmer/", "Πισίνα με skimmer"),
                      ("/pisina-yperxeilisis/", "Πισίνα υπερχείλισης"), ("/mikri-pisina/", "Μικρή πισίνα για αυλή"),
-                     ("/yperypsomeni-pisina/", "Υπερυψωμένη πισίνα"), ("/diastaseis-pisinas/", "Διαστάσεις & υπολογιστής"),
+                     ("/yperypsomeni-pisina/", "Υπερυψωμένη πισίνα"), ("/diastaseis-pisinas/", "Διαστάσεις πισίνας"),
                      ("/pisina-gia-katalymata/", "Πισίνα για βίλα & κατάλυμα")]),
         ("Κατασκευή", [("/pos-kataskevazoume/", "Πώς κατασκευάζουμε"), ("/egkrisi-mikris-klimakas/", "Έγκριση μικρής κλίμακας"),
                        ("/liner-pisinas/", "Liner & χρώματα"), ("/michanostasio-pisinas/", "Μηχανοστάσιο & φίλτρο"),
@@ -89,7 +89,7 @@ MENU = {
     ],
     "en": [
         ("Pools", [("/en/prefab-pools/", "Prefab pools"), ("/en/skimmer-pool/", "Skimmer pool"),
-                   ("/en/overflow-pool/", "Overflow pool"), ("/en/pool-sizes/", "Sizes & calculator")]),
+                   ("/en/overflow-pool/", "Overflow pool"), ("/en/pool-sizes/", "Pool sizes")]),
         ("Build", [("/en/pool-permit/", "Small-scale permit"), ("/en/pool-liner/", "Liner & colours"),
                    ("/en/pools-on-islands/", "Pools on the islands")]),
         ("Company", [("/en/projects/", "Projects"), ("/en/faq/", "Questions"), ("/en/contact/", "Contact")]),
@@ -310,35 +310,6 @@ def related(lang, items):
     title = "Συνεχίστε την ανάγνωση" if lang == "el" else "Read next"
     links = "".join('<a href="%s"><b>%s</b><span>%s</span></a>' % i for i in items)
     return '<section class="sec sec-tint"><div class="wrap"><h2>%s</h2><div class="rel">%s</div></div></section>' % (title, links)
-
-
-def calculator(lang):
-    if lang == "el":
-        L = dict(h="Υπολογιστής πισίνας", p="Δώστε διαστάσεις και ύψος panels. Βλέπετε επιφάνεια, νερό, τι έγκριση χρειάζεται και πόση παροχή θέλει η αντλία.",
-                 l="Μήκος (m)", w="Πλάτος (m)", ph="Ύψος panels", a="Επιφάνεια νερού", v="Νερό για γέμισμα", pm="Έγκριση",
-                 pump="Παροχή φίλτρανσης", trucks="Βυτία νερού (~20 m³)", hint="Τιμές κατά προσέγγιση. Τον τελικό υπολογισμό τον κάνουμε στη μελέτη.")
-    else:
-        L = dict(h="Pool calculator", p="Enter the size and the panel height. You see the water area, volume, which approval is needed and the filter flow.",
-                 l="Length (m)", w="Width (m)", ph="Panel height", a="Water area", v="Water to fill", pm="Approval",
-                 pump="Filter flow", trucks="Water trucks (~20 m³)", hint="Approximate figures. We do the final numbers in the study.")
-    return """<div class="calc" data-lang="{lang}">
- <div class="calc-in"><h3>{h}</h3><p>{p}</p>
-  <div class="calc-f">
-   <label>{l}<input type="number" name="len" value="8" min="2" max="25" step="0.5" inputmode="decimal"></label>
-   <label>{w}<input type="number" name="wid" value="4" min="2" max="12" step="0.5" inputmode="decimal"></label>
-   <label>{ph}<select name="ph"><option value="1.1">1,10 m</option><option value="1.5" selected>1,50 m</option></select></label>
-  </div>
-  <svg class="calc-pool" viewBox="0 0 300 160" aria-hidden="true"><rect class="cp-deck" x="0" y="0" width="300" height="160" rx="10"/><rect class="cp-water" x="70" y="50" width="160" height="80" rx="3"/></svg>
-  <dl class="calc-out">
-   <div><dt>{a}</dt><dd data-o="area">32 m²</dd></div>
-   <div><dt>{v}</dt><dd data-o="vol">45 m³</dd></div>
-   <div><dt>{trucks}</dt><dd data-o="trucks">3</dd></div>
-   <div><dt>{pump}</dt><dd data-o="pump">9 m³/h</dd></div>
-   <div class="calc-pm"><dt>{pm}</dt><dd data-o="permit">…</dd></div>
-  </dl>
-  <p class="small">{hint}</p>
- </div>
-</div>""".format(lang=lang, **L)
 
 
 def P(lang, path, title, desc, h1, lead, hero, hero_alt, body, **kw):

@@ -1,5 +1,5 @@
 """English pages (/en/): the main topics for foreign owners of homes and villas in Greece."""
-from parts import P, pic, cards, gallery, sec, split, steps, table, note, related, calculator, faq_block, PHONE, PHONE_TEL, WA, MOBILE, EMAIL, MAPS
+from parts import P, pic, cards, gallery, sec, split, steps, table, note, related, faq_block, quote_block, PHONE, PHONE_TEL, WA, MOBILE, EMAIL, MAPS
 from el_main import SIZES
 from el_build import SERIES, nice
 
@@ -47,7 +47,7 @@ def home():
 <p>A prefab pool is not a temporary pool. It is a permanent structure whose walls arrive as factory-made panels and are bolted together on site.</p>
 <ul class="ticks"><li><b>2 mm galvanised steel panels</b>, 1.10 or 1.50 m high.</li><li><b>Adjustable braces</b> at every joint keep the walls perfectly vertical.</li><li><b>1.5 mm reinforced PVC liner</b>, welded on site, 10-year written warranty.</li><li><b>Flexible, so it does not crack</b> when the ground moves, a real advantage in Greece.</li></ul>
 <p><a href="/en/prefab-pools/">How a prefab pool is built →</a></p>"""), cls="sec sec-tint", narrow=False)
-    body += sec("Plan your pool", '<p style="max-width:62ch">Change the length and width to see the water volume and whether the pool stays under the 50 m² limit. All sizes are in the <a href="/en/pool-sizes/">size guide</a>.</p>' + calculator("en"), kicker="Calculator")
+    body += quote_block("en")
     body += sec("", '<div class="sec-head"><div><p class="kicker">Our work</p><h2>Pools people already swim in</h2></div><a href="/en/projects/">All projects →</a></div><div class="scroller">%s</div>' % "".join(
         '<figure class="proj">%s<figcaption><b>%s</b>%s</figcaption></figure>' % (pic(n, t, "(min-width: 900px) 360px, 80vw", zoom=True), t, c) for n, t, c in PROJECTS), narrow=False)
     body += sec("Building from abroad?", """<div class="cols cols-2"><div><p>Many of our clients live outside Greece and visit their house a few times a year. We are used to working that way: photos and short videos at every stage on WhatsApp, a written proposal in English, and a pool that is ready and clean when you arrive.</p>
@@ -67,7 +67,7 @@ def home():
     body += faq_block(faq, "en")
     return N("/en/", "Prefab Swimming Pools in Greece | Spartakos Pools",
              "Prefab swimming pools in Athens, the Greek islands and mainland Greece: galvanised steel panels, PVC liner with a 10-year warranty, skimmer or overflow. Free quote.",
-             "Prefab pools", "", "pisina-thea-thalassa-veranta", "", body, alt="/", home_hero=hero, cls="home", faq=faq, faq_inline=True)
+             "Prefab pools", "", "pisina-thea-thalassa-veranta", "", body, alt="/", home_hero=hero, cls="home", faq=faq, faq_inline=True, no_quote=True)
 
 
 def prefab():
@@ -132,17 +132,17 @@ def sizes():
         a = L * W
         rows.append(["%g × %g m" % (L, W), "%g m²" % a, "~%d m³" % round(a * 0.98), "~%d m³" % round(a * 1.38),
                      "Small-scale approval" if a < 50 else "<b>Building permit</b>"])
-    body = sec("", calculator("en") + table(["Size", "Water area", "Water, 1.10 m panels", "Water, 1.50 m panels", "Approval"], rows) + """<div class="prose">
+    body = quote_block("en") + sec("", table(["Size", "Water area", "Water, 1.10 m panels", "Water, 1.50 m panels", "Approval"], rows) + """<div class="prose">
 <h2>Choosing a size</h2>
 <p><b>Who will swim?</b> For laps, aim for at least 8 m of length. For children playing, 4 m of width or more. For cooling off with a drink, 4 × 3 m with a bench is plenty.</p>
 <p><b>How much space is left?</b> Keep at least 1–1.5 m of deck around the pool, room for two loungers and a spot for the plant room.</p>
 <p><b>Where does the water come from?</b> On dry islands, every cubic metre counts: an 8 × 4 m pool with 1.10 m panels needs about 13 m³ less than with 1.50 m panels.</p>
 <p><b>Under 50 m²?</b> A long, narrow 12 × 4 m pool (48 m²) gives real swimming length and stays under the limit.</p></div>""")
-    return N("/en/pool-sizes/", "Pool Sizes & Calculator | Spartakos Pools",
-             "Prefab pool sizes from 4 × 3 to 12 × 6 m: water area, volume with 1.10 or 1.50 m panels, and when a small-scale approval is enough. Online pool calculator.",
+    return N("/en/pool-sizes/", "Pool Sizes: Water Area, Volume, Permit | Spartakos Pools",
+             "Prefab pool sizes from 4 × 3 to 12 × 6 m: water area, volume with 1.10 or 1.50 m panels, and when a small-scale approval is enough, and how to choose.",
              "Pool sizes: how much water, how much space, which approval",
-             "Use the calculator or find your size in the table: water area, volume to fill and whether the pool stays under 50 m².",
-             "pisina-makria-foinikes", "Long narrow prefab pool between palm trees", body, short="Sizes", kicker="Sizes", crumbs=POOLS, alt="/diastaseis-pisinas/")
+             "Find your size in the table or send us the size of your space: water area, volume to fill and whether the pool stays under 50 m².",
+             "pisina-makria-foinikes", "Long narrow prefab pool between palm trees", body, short="Sizes", kicker="Sizes", crumbs=POOLS, alt="/diastaseis-pisinas/", no_quote=True)
 
 
 def permit():

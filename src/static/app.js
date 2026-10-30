@@ -1,4 +1,4 @@
-// Menu, photo viewer, pool calculator and the quote form.
+// Menu, photo viewer and the quote form.
 (function () {
   var en = document.documentElement.lang === "en";
   var WA = "306936505824";
@@ -45,41 +45,6 @@
       x0 = null;
     });
   }
-
-  // pool calculator
-  function fmt(n, d) { return n.toLocaleString(en ? "en-GB" : "el-GR", { maximumFractionDigits: d || 0 }); }
-  document.querySelectorAll(".calc").forEach(function (c) {
-    var f = function (n) { return c.querySelector("[name=" + n + "]"); };
-    var o = function (n) { return c.querySelector("[data-o=" + n + "]"); };
-    var water = c.querySelector(".cp-water");
-    function run() {
-      var L = Math.max(1, parseFloat(String(f("len").value).replace(",", ".")) || 0);
-      var W = Math.max(1, parseFloat(String(f("wid").value).replace(",", ".")) || 0);
-      var ph = parseFloat(f("ph").value);
-      var area = L * W;
-      var vol = area * (ph - 0.12);
-      var pump = vol / 5; // whole volume through the filter in about 5 hours
-      o("area").textContent = fmt(area, 1) + " m²";
-      o("vol").textContent = "≈ " + fmt(vol) + " m³";
-      o("trucks").textContent = fmt(Math.ceil(vol / 20));
-      o("pump").textContent = "≈ " + fmt(pump, 1) + " m³/h";
-      o("permit").textContent = area < 50
-        ? (en ? "Under 50 m²: small-scale works approval is enough (no building permit), if the plot meets the other conditions."
-              : "Κάτω από 50 m²: αρκεί έγκριση εργασιών μικρής κλίμακας, χωρίς οικοδομική άδεια, αν πληρούνται και οι υπόλοιποι όροι.")
-        : (en ? "50 m² or more: a building permit is needed. Shrinking the pool slightly can keep it under the limit."
-              : "50 m² και πάνω: χρειάζεται οικοδομική άδεια. Συχνά μια μικρή αλλαγή στις διαστάσεις την κρατά κάτω από το όριο.");
-      c.classList.toggle("over", area >= 50);
-      // drawing: keep the proportions inside a 220 x 110 box
-      var s = Math.min(220 / L, 110 / W);
-      var w = L * s, h = W * s;
-      water.setAttribute("width", w.toFixed(1));
-      water.setAttribute("height", h.toFixed(1));
-      water.setAttribute("x", ((300 - w) / 2).toFixed(1));
-      water.setAttribute("y", ((160 - h) / 2).toFixed(1));
-    }
-    c.addEventListener("input", run);
-    run();
-  });
 
   // quote form: emailed through the site's Worker; WhatsApp, Viber and email as alternatives
   document.querySelectorAll(".qform").forEach(function (form) {
