@@ -2,7 +2,7 @@
 import html
 
 DOMAIN = "https://spartak.unknwn-creation.workers.dev"
-VER = "1030d"
+VER = "1030e"
 IMG = {}  # photo name -> (width, height), filled by build.py
 
 PHONE = "+30 212 104 8320"
