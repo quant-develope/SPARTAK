@@ -2,7 +2,7 @@
 import html
 
 DOMAIN = "https://spartak.unknwn-creation.workers.dev"
-VER = "1030b"
+VER = "1030c"
 IMG = {}  # photo name -> (width, height), filled by build.py
 
 PHONE = "+30 212 104 8320"
@@ -15,7 +15,7 @@ MAPS = "https://maps.google.com/?cid=370785818317058797"
 FB = "https://www.facebook.com/pisina.com.gr"
 IG = "https://www.instagram.com/pisines.spartakos"
 BIZ = {
-    "name": {"el": "Πισίνες Σπάρτακος", "en": "Spartakos Pools"},
+    "name": {"el": "Πισίνα Προκάτ Ελλάδα", "en": "Pisina Prokat Greece"},
     "street": {"el": "Ξενοφώντος 112", "en": "Xenofontos 112"},
     "city": {"el": "Καλλιθέα", "en": "Kallithea"},
     "zip": "176 74",
@@ -53,15 +53,15 @@ T = {
     "el": {
         "skip": "Μετάβαση στο περιεχόμενο", "menu": "Μενού", "quote": "Ζητήστε προσφορά", "call": "Κλήση",
         "home": "Αρχική", "faq": "Συχνές ερωτήσεις", "lang": "EN", "lang_label": "English version",
-        "addr": "Ξενοφώντος 112, 176 74 Καλλιθέα, Αττική", "map": "Χάρτης", "tagline": "Πισίνες προκάτ · 28 χρόνια",
-        "rights": "Πισίνες Σπάρτακος. Πισίνες προκάτ με γαλβανισμένα panels και liner.",
+        "addr": "Ξενοφώντος 112, 176 74 Καλλιθέα, Αττική", "map": "Χάρτης", "tagline": "Πισίνες προκάτ · 28 χρόνια", "w1": "ΠΙΣΙΝΑ ΠΡΟΚΑΤ", "w2": "ΕΛΛΑΔΑ",
+        "rights": "Πισίνα Προκάτ Ελλάδα. Πισίνες προκάτ με γαλβανισμένα panels και liner.",
         "privacy": "Απόρρητο", "price": "Τιμή: κατόπιν επικοινωνίας, για κάθε πισίνα χωριστά.",
     },
     "en": {
         "skip": "Skip to content", "menu": "Menu", "quote": "Ask for a quote", "call": "Call",
         "home": "Home", "faq": "Questions", "lang": "ΕΛ", "lang_label": "Ελληνική έκδοση",
-        "addr": "Xenofontos 112, 176 74 Kallithea, Attica, Greece", "map": "Map", "tagline": "Prefab pools · 28 years",
-        "rights": "Spartakos Pools. Prefab pools with galvanised steel panels and PVC liner.",
+        "addr": "Xenofontos 112, 176 74 Kallithea, Attica, Greece", "map": "Map", "tagline": "Prefab pools · 28 years", "w1": "PISINA PROKAT", "w2": "GREECE",
+        "rights": "Pisina Prokat Greece. Prefab pools with galvanised steel panels and PVC liner.",
         "privacy": "Privacy", "price": "Price: on request, worked out for each pool.",
     },
 }
@@ -112,7 +112,7 @@ def header(p):
     return """<a class="skip" href="#main">{skip}</a>
 <header class="top">
  <div class="wrap top-in">
-  <a class="brand" href="{home}" aria-label="{name}">{logo}<span><b>ΣΠΑΡΤΑΚΟΣ</b><small>{tag}</small></span></a>
+  <a class="brand" href="{home}" aria-label="{name}">{logo}<span><b>{w1}</b><small>{w2}</small></span></a>
   <nav class="nav" aria-label="main">{nav}</nav>
   <div class="top-act">
    <a class="lang" href="{other}" hreflang="{olang}" title="{lang_label}">{lang_btn}</a>
@@ -125,7 +125,7 @@ def header(p):
   </div>
  </div>
 </header>
-""".format(skip=t["skip"], home=home, name=BIZ["name"][lang], logo=LOGO, tag=t["tagline"], nav=nav, other=other,
+""".format(skip=t["skip"], home=home, name=BIZ["name"][lang], logo=LOGO, w1=t["w1"], w2=t["w2"], nav=nav, other=other,
            olang="en" if lang == "el" else "el", lang_label=t["lang_label"], lang_btn=t["lang"], contact=contact,
            quote=t["quote"], menu=t["menu"], groups=groups, tel=PHONE_TEL, phone=PHONE, wa=WA, mobile=MOBILE, email=EMAIL)
 
@@ -160,7 +160,7 @@ def hero(p):
 def business_ld(lang):
     return {
         "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": DOMAIN + "/#business",
-        "name": BIZ["name"][lang], "alternateName": "Spartakos Pisines" if lang == "el" else "Πισίνες Σπάρτακος",
+        "name": BIZ["name"][lang], "alternateName": ["Πισίνες Σπάρτακος", "Spartakos Pools"],
         "url": DOMAIN + ("/" if lang == "el" else "/en/"), "logo": DOMAIN + "/icon-512.png",
         "image": DOMAIN + "/img/pisina-thea-thalassa-veranta-og.jpg",
         "telephone": PHONE_TEL, "email": EMAIL,
@@ -241,7 +241,7 @@ def footer(p):
                    for g, links in MENU[lang][:3])
     return """<footer class="foot">
  <div class="wrap foot-grid">
-  <div class="foot-biz"><a class="brand brand-foot" href="{home}">{logo}<span><b>ΣΠΑΡΤΑΚΟΣ</b><small>{tag}</small></span></a>
+  <div class="foot-biz"><a class="brand brand-foot" href="{home}">{logo}<span><b>{w1}</b><small>{w2}</small></span></a>
    <p>{addr}<br><a href="tel:{tel}">{phone}</a><br><a href="https://wa.me/{wa}">{mobile}</a> (WhatsApp, Viber)<br><a href="mailto:{email}">{email}</a></p>
    <p class="social"><a href="{maps}" rel="noopener">Google Maps</a> · <a href="{fb}" rel="noopener">Facebook</a> · <a href="{ig}" rel="noopener">Instagram</a></p>
    <p class="small">{price}</p>
@@ -257,7 +257,7 @@ def footer(p):
  <a class="mbar-q" href="{contact}#quote">{quote}</a>
 </nav>
 <div class="lb" hidden><button class="lb-x" aria-label="close">×</button><button class="lb-p" aria-label="previous">‹</button><figure><img alt=""><figcaption></figcaption></figure><button class="lb-n" aria-label="next">›</button></div>
-""".format(home="/" if lang == "el" else "/en/", logo=LOGO, tag=t["tagline"], addr=t["addr"], tel=PHONE_TEL,
+""".format(home="/" if lang == "el" else "/en/", logo=LOGO, w1=t["w1"], w2=t["w2"], addr=t["addr"], tel=PHONE_TEL,
            phone=PHONE, wa=WA, mobile=MOBILE, email=EMAIL, maps=MAPS, fb=FB, ig=IG, price=t["price"], cols=cols,
            year=2026, rights=t["rights"], priv="/aporrito/" if lang == "el" else "/en/privacy/", privacy=t["privacy"],
            call=t["call"], contact="/epikoinonia/" if lang == "el" else "/en/contact/", quote=t["quote"])

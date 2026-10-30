@@ -26,11 +26,11 @@ export default {
     if (form.get("_honey")) return json({ success: true });
     if (!get("Όνομα") || !get("Τηλέφωνο")) return json({ success: false, message: "name and phone required" }, 400);
 
-    const subject = "Νέα αίτηση (spartak): " + get("Όνομα") + (get("Γλώσσα") === "English" ? " (English)" : "");
+    const subject = "Νέα αίτηση (Πισίνα Προκάτ Ελλάδα): " + get("Όνομα") + (get("Γλώσσα") === "English" ? " (English)" : "");
     const text = fields.map(([k, v]) => k + ": " + v).join("\n") + "\n";
     const replyTo = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(get("Email")) ? get("Email") : "";
     const headers = [
-      "From: =?UTF-8?B?" + b64("Spartakos Pisines (site 2)") + "?= <" + FROM + ">",
+      "From: =?UTF-8?B?" + b64("Πισίνα Προκάτ Ελλάδα (site)") + "?= <" + FROM + ">",
       "To: <" + TO + ">",
       replyTo && "Reply-To: <" + replyTo + ">",
       "Subject: =?UTF-8?B?" + b64(subject) + "?=",

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static site generator for the second Spartakos pools site.
+"""Static site generator for the second Spartakos pools site, "Πισίνα Προκάτ Ελλάδα".
 
 Run: python3 src/build.py   (writes ../site, which Cloudflare serves as-is)
 Pages live in pages_el.py / pages_en.py, shared blocks in parts.py.
@@ -195,7 +195,7 @@ def main():
     write("/sitemap.xml", sitemap(pages))
     write("/robots.txt", "User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % DOMAIN)
     write("/site.webmanifest", json.dumps({
-        "name": BIZ["name"]["el"], "short_name": "Σπάρτακος", "start_url": "/", "display": "browser",
+        "name": BIZ["name"]["el"], "short_name": "Πισίνα Προκάτ", "start_url": "/", "display": "browser",
         "background_color": "#f6f1e8", "theme_color": "#0e4f5c",
         "icons": [{"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
                   {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"}]}, ensure_ascii=False))

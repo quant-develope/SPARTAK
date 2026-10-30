@@ -1,4 +1,4 @@
-# Spartak: second Spartakos pools site
+# Πισίνα Προκάτ Ελλάδα (Pisina Prokat Greece): second Spartakos pools site
 
 Live: https://spartak.unknwn-creation.workers.dev/ (Cloudflare Worker `spartak`).
 Every push to `main` deploys through Cloudflare Workers Builds (`npx wrangler deploy`, see `wrangler.jsonc`).

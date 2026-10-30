@@ -24,7 +24,7 @@ def home():
     hero = """<section class="hero">
  %s
  <div class="wrap hero-in">
-  <p class="kicker">Spartakos Pools · Athens, Greece</p>
+  <p class="kicker">Pisina Prokat Greece · Athens</p>
   <h1>Prefab pools for homes and villas across Greece</h1>
   <p class="lead">Galvanised steel walls, a watertight liner with a 10-year written warranty, and one team from the site visit to the first swim. Athens, the islands and the mainland.</p>
   <div class="hero-cta"><a class="btn" href="#quote">Ask for a quote</a><a class="btn btn-light" href="/en/projects/">See our projects</a></div>
@@ -65,7 +65,7 @@ def home():
         ("Do you build on the islands?", 'Yes, from Mykonos and Rhodes to Corfu and Limnos. See <a href="/en/pools-on-islands/">how island projects work</a>.'),
     ]
     body += faq_block(faq, "en")
-    return N("/en/", "Prefab Swimming Pools in Greece | Spartakos Pools",
+    return N("/en/", "Prefab Swimming Pools in Greece | Pisina Prokat Greece",
              "Prefab swimming pools in Athens, the Greek islands and mainland Greece: galvanised steel panels, PVC liner with a 10-year warranty, skimmer or overflow. Free quote.",
              "Prefab pools", "", "pisina-thea-thalassa-veranta", "", body, alt="/", home_hero=hero, cls="home", faq=faq, faq_inline=True, no_quote=True)
 
@@ -85,7 +85,7 @@ def prefab():
 <p>Two people can carry a panel. Narrow side passages, steps, terraces and ferries are not a problem.</p>""") + split("vasi-pisinas-prokat", "Base of a prefab pool with the first panels", """<h3>What to keep in mind</h3>
 <ul><li>Sharp objects can damage a liner: use soft brushes and pool-safe cleaners.</li><li>A liner pool is not emptied in winter. The water holds the liner in place.</li><li>Balanced water chemistry (pH 7.0–7.4) adds years to the liner.</li></ul>
 <p>Next: <a href="/en/skimmer-pool/">skimmer pool</a> or <a href="/en/overflow-pool/">overflow pool</a>.</p>""", rev=True), narrow=False)
-    return N("/en/prefab-pools/", "Prefab Pools: How They Are Built | Spartakos Pools",
+    return N("/en/prefab-pools/", "Prefab Pools: How They Are Built | Pisina Prokat Greece",
              "How a prefab swimming pool is built: 2 mm galvanised steel panels, adjustable braces, 1.5 mm PVC liner with a 10-year warranty. Why it does not crack and installs fast.",
              "Prefab pools: a steel frame that holds water for decades",
              "Before choosing a colour or a size, it helps to know what sits behind the liner. Here is every part of the pool, as we build it.",
@@ -103,7 +103,7 @@ def skimmer():
 <p>Roughly one per 25 m² of water: one for a 4 × 3 m pool, two for 8 × 4 m. We place them downwind, so the breeze pushes leaves towards them.</p></div>""" + gallery([
         ("pisina-xylini-stefani-gazon", "Timber coping and lawn"), ("pisina-skala-inox", "Stainless steel ladder"),
         ("pisina-limnos-petrino-spiti", "Limnos guesthouse pool")]))
-    return N("/en/skimmer-pool/", "Skimmer Pool: Simple and Economical | Spartakos Pools",
+    return N("/en/skimmer-pool/", "Skimmer Pool: Simple and Economical | Pisina Prokat Greece",
              "Prefab skimmer pool: how the water circulates, how many skimmers you need, and why it is the simplest and most economical choice for a family home in Greece.",
              "Skimmer pool: the simple system that just works",
              "Most of our family projects are skimmer pools. Little equipment, a small filter unit, easy care and clear water all summer.",
@@ -119,7 +119,7 @@ def overflow():
         + note("<p>The balance tank needs space close to the plant room. We plan it from day one, so it does not take room from the garden.</p>")
         + gallery([("pisina-yperxeilisi-skouro-liner", "Dark liner, full-length overflow"), ("pisina-yperxeilisi-thea", "Overflow with a sea view"),
                    ("kanali-yperxeilisis-schara", "Channel and grating")]))
-    return N("/en/overflow-pool/", "Overflow Pool: Water Level with the Deck | Spartakos Pools",
+    return N("/en/overflow-pool/", "Overflow Pool: Water Level with the Deck | Pisina Prokat Greece",
              "Prefab overflow pool with a perimeter channel, 25 cm grating and balance tank. A mirror-like surface for villas, holiday rentals and large pools in Greece.",
              "Overflow pool: water level with the deck",
              "The water rises to the edge and spills into a channel all around. The surface stays clean even with many swimmers.",
@@ -138,7 +138,7 @@ def sizes():
 <p><b>How much space is left?</b> Keep at least 1–1.5 m of deck around the pool, room for two loungers and a spot for the plant room.</p>
 <p><b>Where does the water come from?</b> On dry islands, every cubic metre counts: an 8 × 4 m pool with 1.10 m panels needs about 13 m³ less than with 1.50 m panels.</p>
 <p><b>Under 50 m²?</b> A long, narrow 12 × 4 m pool (48 m²) gives real swimming length and stays under the limit.</p></div>""")
-    return N("/en/pool-sizes/", "Pool Sizes: Water Area, Volume, Permit | Spartakos Pools",
+    return N("/en/pool-sizes/", "Pool Sizes: Water Area, Volume, Permit | Pisina Prokat Greece",
              "Prefab pool sizes from 4 × 3 to 12 × 6 m: water area, volume with 1.10 or 1.50 m panels, and when a small-scale approval is enough, and how to choose.",
              "Pool sizes: how much water, how much space, which approval",
              "Find your size in the table or send us the size of your space: water area, volume to fill and whether the pool stays under 50 m².",
@@ -159,7 +159,7 @@ def permit():
     ]) + note("<p>Rules change and depend on each plot (outside town plans, traditional settlements, archaeological zones). The engineer confirms your case before any work. This is general information, not legal advice.</p>", "note note-coral") + """<div class="prose">
 <h2>Over 50 m²?</h2><p>Then a building permit is needed. It is perfectly possible, it just takes longer. If you are a few square metres over, a long narrow pool often solves it.</p>
 <h2>After the build</h2><p>A private pool is declared on the E9 property form and affects property tax (ENFIA) and income presumptions. Your accountant will give you the current figures.</p></div>""")
-    return N("/en/pool-permit/", "Pool Permit in Greece: Small-Scale Approval | Spartakos Pools",
+    return N("/en/pool-permit/", "Pool Permit in Greece: Small-Scale Approval | Pisina Prokat Greece",
              "Do you need a building permit for a pool in Greece? Under 50 m² of water a small-scale works approval is usually enough. The conditions explained in plain English.",
              "Pool permit in Greece: the small-scale works approval",
              "A pool with under 50 m² of water usually needs a simple approval, not a full building permit. Here are the conditions, in plain English.",
@@ -184,7 +184,7 @@ def liner():
     ]) + """<div class="prose"><h2>Haogenplast ranges</h2><p>We use Haogenplast membranes, certified to EN 15836-2, and SOPREMAPOOL anti-slip membranes.</p></div>""" + table(
         ["Range", "Type", "Anti-slip", "Colours"], [[s, EN_SERIES[s], slip.replace("Ναι, κατ.", "Yes, class").replace("Λεία", "Smooth"), n] for s, d, slip, n, _ in SERIES])
         + sw + '<p class="small" style="margin-top:14px">Manufacturer photos. Screen colours differ from the real material: ask us for a sample.</p>')
-    return N("/en/pool-liner/", "Pool Liner Colours & Haogenplast Ranges | Spartakos Pools",
+    return N("/en/pool-liner/", "Pool Liner Colours & Haogenplast Ranges | Pisina Prokat Greece",
              "Pool liner for prefab pools: 1.5 mm PVC with a 10-year warranty and Haogenplast ranges Classic, 3D-Uni, StoneFlex, StoneTile, Matrix, Larch. How each colour changes the water.",
              "Pool liner: colour, texture and watertightness in one membrane",
              "The liner decides how your pool looks and how the steps feel underfoot. See colours, textures and the ranges we use.",
@@ -204,7 +204,7 @@ def projects():
         ["Villa Christy, Mykonos", "2024", "Villa pool"], ["Kleopatra estate, Koropi", "2024", "Estate pool"], ["Limnos", "2023", "Guesthouse pool and jacuzzi"],
         ["Trikala", "2022–2023", "Skimmer pools"], ["Glyfada", "2014, 2022", "Prefab pools"], ["Rhodes", "2020", "Prefab pool"],
         ["Lagonisi", "2019", "Overflow pool"], ["Kifisia", "2016", "Skimmer pool"], ["Corfu", "2014", "Prefab pool"]]))
-    return N("/en/projects/", "Projects: Prefab Pools We Built | Spartakos Pools",
+    return N("/en/projects/", "Projects: Prefab Pools We Built | Pisina Prokat Greece",
              "Photos of prefab pools we built in Greece: overflow, skimmer and raised pools, villa pools. Mykonos, Limnos, Rhodes, Corfu, Glyfada, Koropi and more.",
              "Projects: pools people already swim in", "From town gardens to island villas. Tap a photo to see it large.",
              "pisina-xylini-stefani-gazon", "Prefab pool with timber coping", body, short="Projects", kicker="Portfolio", alt="/erga/")
@@ -220,7 +220,7 @@ def islands():
     ]) + """<div class="prose" style="margin-top:22px"><h2>When to start</h2>
 <p>For a pool ready in June, start talking in winter: the approval, the liner order and ferry bookings all take time. In July and August ports are busy and many islands restrict building work.</p></div>""" + gallery([
         ("pisina-limnos-petrino-spiti", "Limnos"), ("pisina-limnos-vrady", "Limnos at dusk"), ("mini-pisina-kataskevi-thea", "Building with a sea view")]))
-    return N("/en/pools-on-islands/", "Building a Pool on a Greek Island | Spartakos Pools",
+    return N("/en/pools-on-islands/", "Building a Pool on a Greek Island | Pisina Prokat Greece",
              "Prefab pools on the Greek islands: shipping materials by ferry, filling with little water, salt and wind, timing. Cyclades, Dodecanese, Ionian, North Aegean.",
              "Pools on the Greek islands: the pool that travels by ferry",
              "Transport, water, salt and crew time make island projects different. Here is how we organise them so your pool is ready for summer.",
@@ -238,7 +238,7 @@ def faq_page():
         ("Salt or chlorine?", "Both disinfect with chlorine. A salt system makes it automatically from a low dose of salt, and feels softer on the skin."),
         ("Can you work while I am abroad?", "Yes. We send photos and videos on WhatsApp at every stage."),
     ]
-    return N("/en/faq/", "Prefab Pool FAQ | Spartakos Pools",
+    return N("/en/faq/", "Prefab Pool FAQ | Pisina Prokat Greece",
              "Answers about prefab pools in Greece: depth, permits, price, liner warranty, winter care, salt or chlorine, building while you are abroad.",
              "Questions about prefab pools", "Short answers to what clients ask us most. Missing something? Message us on WhatsApp.",
              "pisina-skala-inox", "Prefab pool with stainless ladder", "", short="Questions", kicker="FAQ", alt="/erotiseis/", faq=qs)
@@ -249,19 +249,19 @@ def contact():
 <div><h3>Email</h3><p><a href="mailto:%s">%s</a></p><h3>Address</h3><p>Xenofontos 112<br>176 74 Kallithea, Attica, Greece<br><a href="%s" rel="noopener">Open in Google Maps →</a></p></div>
 <div><h3>What to send us</h3><ul class="ticks"><li>Location of the property</li><li>Size of the space or the pool</li><li>Skimmer or overflow, if you know</li><li>A few photos of the plot on WhatsApp</li></ul></div></div>"""
                % (PHONE_TEL, PHONE, WA, MOBILE, EMAIL, EMAIL, MAPS), narrow=False)
-    return N("/en/contact/", "Contact & Free Quote | Spartakos Pools",
-             "Contact Spartakos Pools, Xenofontos 112, Kallithea, Athens. Phone +30 212 104 8320, WhatsApp/Viber +30 693 650 5824. Free quote for a prefab pool in Greece.",
+    return N("/en/contact/", "Contact & Free Quote | Pisina Prokat Greece",
+             "Contact Pisina Prokat Greece, Xenofontos 112, Kallithea, Athens. Phone +30 212 104 8320, WhatsApp/Viber +30 693 650 5824. Free quote for a prefab pool in Greece.",
              "Tell us about your pool", "A call or a message with two photos is enough to start. The quote is free.",
              "pisina-me-deck-spiti", "Prefab pool with deck next to the house", body, short="Contact", kicker="Contact", alt="/epikoinonia/")
 
 
 def privacy():
-    body = sec("", """<div class="prose"><p>This website belongs to Spartakos Pools (Πισίνες Σπάρτακος), Xenofontos 112, 176 74 Kallithea, Greece (pisina.gr@gmail.com).</p>
+    body = sec("", """<div class="prose"><p>The website “Pisina Prokat Greece” belongs to Spartakos Pools (Πισίνες Σπάρτακος), Xenofontos 112, 176 74 Kallithea, Greece (pisina.gr@gmail.com).</p>
 <h2>What we receive</h2><p>When you send the quote form, we receive by email the details you entered: name, phone, area, size and message. If you write to us on WhatsApp, Viber or email, we receive what you send there.</p>
 <h2>Why</h2><p>Only to reply and send you a quote. We do not sell or share your details for advertising, and we send no newsletters.</p>
 <h2>Cookies</h2><p>No tracking or advertising cookies. Fonts are loaded from Google Fonts.</p>
 <h2>Your rights</h2><p>Ask for access, correction or deletion at pisina.gr@gmail.com. You may also complain to the Hellenic Data Protection Authority.</p></div>""")
-    return N("/en/privacy/", "Privacy Policy | Spartakos Pools", "How we use the details you send through the quote form.",
+    return N("/en/privacy/", "Privacy Policy | Pisina Prokat Greece", "How we use the details you send through the quote form.",
              "Privacy policy", "Short and clear: what we receive, why, and how to delete it.",
              "pisina-tirkouaz-nero", "Pool with turquoise water", body, short="Privacy", alt="/aporrito/", no_quote=True)
 

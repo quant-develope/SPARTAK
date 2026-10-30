@@ -55,7 +55,7 @@ li { margin: .3em 0; }
 .brand svg { width: 44px; height: 44px; --logo-ink: #0e4f5c; }
 .brand span { display: flex; flex-direction: column; line-height: 1.05; }
 .brand b { font: 700 1.15rem/1 var(--serif); letter-spacing: .08em; }
-.brand small { font: 500 .72rem/1.3 var(--sans); color: var(--muted); letter-spacing: .04em; margin-top: 3px; }
+.brand small { font: 600 .74rem/1.3 var(--sans); color: var(--aqua); letter-spacing: .34em; margin-top: 4px; }
 .nav { display: none; gap: 4px; margin-left: auto; }
 .nav a { padding: 8px 12px; border-radius: 999px; text-decoration: none; color: var(--ink); font-weight: 500; font-size: .96rem; }
 .nav a:hover, .nav a[aria-current] { background: var(--foam); color: var(--sea-2); }
@@ -250,7 +250,7 @@ figcaption { font-size: .88rem; color: var(--muted); margin-top: 8px; }
 .foot-grid > div > a { display: block; padding: 4px 0; }
 .brand-foot { color: #fff; margin-bottom: 16px; }
 .brand-foot svg { --logo-ink: #ffffff; }
-.brand-foot small { color: rgba(255,255,255,.6); }
+.brand-foot small { color: #ffd2bd; }
 .foot .small { color: rgba(255,255,255,.6); }
 .foot-end { display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.12); margin-top: 36px; padding-top: 18px; font-size: .85rem; }
 @media (min-width: 900px) { .foot { padding-bottom: 40px; } }
